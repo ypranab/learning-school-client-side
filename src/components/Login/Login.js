@@ -29,6 +29,7 @@ const Login = () => {
                 console.log(user);
                 form.reset();
                 setError('');
+                navigate(from, { replace: true });
                 // if (user.emailVerified) {
                 //     navigate(from, { replace: true });
                 // }
