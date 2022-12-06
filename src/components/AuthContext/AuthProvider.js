@@ -42,21 +42,18 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     }
 
-
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             //if (currentUser === null || currentUser.emailVerified) {
             setUser(currentUser);
             // }
             setLoading(false);
-            console.log(user);
         })
 
         return () => {
             unsubscribe();
         }
     }, [])
-
 
     const authInfo = {
         user, loading, verifyEmail,

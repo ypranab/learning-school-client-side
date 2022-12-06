@@ -1,5 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
+import { Button } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -9,16 +10,25 @@ import { AuthContext } from '../AuthContext/AuthProvider';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
-    console.log(user);
+    //console.log(user);
     const handleLogOut = () => {
         logOut()
             .then(() => { })
             .catch(() => { })
     }
     return (
-        <Navbar collapseOnSelect className='mb-4' expand="lg" bg="light" variant="light">
+        <Navbar collapseOnSelect className='mb-4' expand="lg" bg="info" variant="info">
             <Container>
-                <Navbar.Brand> <Link to='/'>Learning School</Link></Navbar.Brand>
+                <Navbar.Brand>
+                    <img
+                        alt=""
+                        src="/src/logo.png"
+                        width="30"
+                        height="30"
+                        className="d-inline-block align-top"
+                    />
+                    <Link to='/' className='text-decoration-none fw-bolder'>Learning School</Link>
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
@@ -42,13 +52,12 @@ const Header = () => {
                                     <>
                                         {user?.email}
                                         <img src={user?.photoURL} alt="" style={{ height: '30px' }} />
-                                        <button onClick={handleLogOut}>log out</button>
-                                        <Link to='/profile'>Profile</Link>
+                                        <Button onClick={handleLogOut} variant="success">log out</Button>
                                     </>
                                     :
                                     <>
-                                        <Link to='/login'>Login</Link>
-                                        <Link to='/register'>Register</Link>
+                                        <Button variant="danger"><Link to='/login'>Login</Link></Button>
+                                        <Button variant="warning"><Link to='/register'>Register</Link></Button>
                                     </>
                             }
                         </>

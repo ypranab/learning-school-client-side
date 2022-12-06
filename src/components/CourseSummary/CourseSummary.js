@@ -1,12 +1,17 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const CourseSummary = () => {
     const courses = useLoaderData();
-    console.log(courses);
+    //console.log(courses);
     return (
-        <div>
-            {courses.map(course => <h4>{course._id}</h4>)}
+        <div className='min-vh-100'>
+            {courses.map((course, idx) =>
+                <Link key={idx} to={`/course/${course._id}`}>
+                    <h4>{course.title}</h4>
+                    <img src={course.image_url} style={{ height: '70px' }} alt="" />
+                </Link>)
+            }
         </div>
     );
 };

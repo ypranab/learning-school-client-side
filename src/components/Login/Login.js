@@ -26,10 +26,11 @@ const Login = () => {
         signIn(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user);
+                //console.log(user);
                 form.reset();
                 setError('');
                 navigate(from, { replace: true });
+                console.log(location);
                 // if (user.emailVerified) {
                 //     navigate(from, { replace: true });
                 // }
