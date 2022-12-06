@@ -15,6 +15,10 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         return signInWithPopup(auth, provider);
     }
+    const gitHubSignIn = (provider) => {
+        setLoading(true);
+        return signInWithPopup(auth, provider);
+    }
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
@@ -57,7 +61,7 @@ const AuthProvider = ({ children }) => {
     const authInfo = {
         user, loading, verifyEmail,
         setLoading, handleUpdate,
-        createUser, googleSignIn,
+        createUser, googleSignIn, gitHubSignIn,
         signIn, logOut
     };
 

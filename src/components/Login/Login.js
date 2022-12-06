@@ -1,4 +1,4 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Button, ButtonGroup } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -8,13 +8,13 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 
 const Login = () => {
     const { signIn, setLoading } = useContext(AuthContext);
+    const gitHubProvider = new GithubAuthProvider();
+    const { googleSignIn, gitHubSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
     const [error, setError] = useState();
     const provider = new GoogleAuthProvider();
-    const { googleSignIn } = useContext(AuthContext);
-
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -36,7 +36,6 @@ const Login = () => {
                 // else {
                 //     toast.error('Email is not verified')
                 // }
-                //console.log(location.state.from.pathname);
             })
             .catch(error => {
                 const errorCode = error.code;
@@ -51,7 +50,19 @@ const Login = () => {
         googleSignIn(provider)
             .then(res => {
                 const user = res.user;
-                console.log(user);
+                navigate(from, { replace: true });
+                //console.log(user);
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    }
+    const handleGitHubSignIn = () => {
+        gitHubSignIn(gitHubProvider)
+            .then(res => {
+                const user = res.user;
+                navigate(from, { replace: true });
+                //console.log(user);
             })
             .catch(error => {
                 console.error(error);
@@ -76,7 +87,7 @@ const Login = () => {
             </form>
             <ButtonGroup vertical>
                 <Button onClick={handleGoogleSignIn} className='mb-2' variant="outline-primary"> <FaGoogle></FaGoogle> Login with Google</Button>
-                <Button variant="outline-dark"> <FaGithub></FaGithub> Login with Github</Button>
+                <Button onClick={handleGitHubSignIn} variant="outline-dark"> <FaGithub></FaGithub> Login with Github</Button>
             </ButtonGroup>
         </div>
     );
