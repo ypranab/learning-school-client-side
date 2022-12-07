@@ -8,8 +8,8 @@ const CourseSummary = () => {
         <div className='min-vh-100'>
             {courses.map((course, idx) =>
                 <Link key={idx} to={`/course/${course._id}`}>
+                    <img src={course.image_url} style={{ height: '120px' }} alt="" />
                     <h4>{course.title}</h4>
-                    <img src={course.image_url} style={{ height: '70px' }} alt="" />
                 </Link>)
             }
         </div>

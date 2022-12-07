@@ -54,5 +54,9 @@ export const routes = createBrowserRouter([
                 loader: ({ params }) => fetch(`https://learning-school-server-side.vercel.app/course/${params.id}`)
             }
         ]
+    },
+    {
+        path: '*',
+        element: <div>Page Not Found</div>
     }
 ])

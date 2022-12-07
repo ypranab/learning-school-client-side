@@ -10,6 +10,7 @@ import { AuthContext } from '../AuthContext/AuthProvider';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
+    const logoURL = '../../logo.png';
     //console.log(user);
     const handleLogOut = () => {
         logOut()
@@ -22,7 +23,7 @@ const Header = () => {
                 <Navbar.Brand>
                     <img
                         alt=""
-                        src="/src/logo.png"
+                        src={logoURL}
                         width="30"
                         height="30"
                         className="d-inline-block align-top"
@@ -33,7 +34,7 @@ const Header = () => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link href='/course'>All Courses</Nav.Link>
-                        <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+                        {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">
                                 Another action
@@ -43,7 +44,7 @@ const Header = () => {
                             <NavDropdown.Item href="#action/3.4">
                                 Separated link
                             </NavDropdown.Item>
-                        </NavDropdown>
+                        </NavDropdown> */}
                     </Nav>
                     <Nav>
                         <>
