@@ -1,6 +1,7 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
-import { Button, ButtonGroup } from 'react-bootstrap';
+import { Button, ButtonGroup, Col, Row } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthContext/AuthProvider';
 import { FaGoogle, FaGithub } from "react-icons/fa";
@@ -72,20 +73,31 @@ const Login = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <h2>Login</h2>
-                <div className='form-control'>
-                    <label htmlFor="email">Email</label>
-                    <input type="email" name='email' required />
-                </div>
-                <div>
-                    <label htmlFor="password">Password</label>
-                    <input type="password" name="password" required />
-                </div>
-                <input className='btn-submit' type="submit" value="login" id="" />
+            <h2>Please Login to access premium courses</h2>
+            <Form onSubmit={handleSubmit}>
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+                    <Form.Label column sm={2}>
+                        Email
+                    </Form.Label>
+                    <Col sm={10}>
+                        <Form.Control name="email" type="email" placeholder="Email" required />
+                    </Col>
+                </Form.Group>
+
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
+                    <Form.Label column sm={2}>
+                        Password
+                    </Form.Label>
+                    <Col sm={10}>
+                        <Form.Control name="password" type="password" placeholder="Password" required />
+                    </Col>
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                    Login
+                </Button>
                 <p>New to Learning School <Link to='/register'>Sign Up</Link></p>
                 <p>{error}</p>
-            </form>
+            </Form>
             <ButtonGroup vertical>
                 <Button onClick={handleGoogleSignIn} className='mb-2' variant="outline-primary"> <FaGoogle></FaGoogle> Login with Google</Button>
                 <Button onClick={handleGitHubSignIn} variant="outline-dark"> <FaGithub></FaGithub> Login with Github</Button>

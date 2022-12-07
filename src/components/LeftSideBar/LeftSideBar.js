@@ -7,7 +7,7 @@ const LeftSideBar = () => {
     return (
         <>
             <h3>Course Categories</h3>
-            <ButtonGroup vertical>
+            <ButtonGroup className='d-grid' vertical>
                 {courseCategories.map((course, idx) =>
                     <Link key={idx} to={`/category/${course.id}`}>
                         <Button size="lg" className="mb-2 btn btn-warning">{course.name}</Button>

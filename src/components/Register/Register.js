@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Button, Col, Form, Row } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../AuthContext/AuthProvider';
@@ -64,34 +65,56 @@ const Register = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <h2>Sign Up</h2>
-                <div className='form-control'>
-                    <label htmlFor="name">Name</label>
-                    <input type="text" name='name' required />
-                </div>
-                <div className='form-control'>
-                    <label htmlFor="photo">photoURL</label>
-                    <input type="photo" name='photo' required />
-                </div>
-                <div className='form-control'>
-                    <label htmlFor="email">Email</label>
-                    <input type="email" name='email' required />
-                </div>
-                <div>
-                    <label htmlFor="password">Password</label>
-                    <input type="password" name="password" required />
-                </div>
-                <div>
-                    <label htmlFor="confirm">Confirm Password</label>
-                    <input type="password" name="confirm" required />
-                </div>
+            <h2>Sign Up</h2>
+            <Form onSubmit={handleSubmit}>
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+                    <Form.Label column sm={2}>
+                        Name
+                    </Form.Label>
+                    <Col sm={10}>
+                        <Form.Control name="name" type="name" placeholder="Your Name" required />
+                    </Col>
+                </Form.Group>
+
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
+                    <Form.Label column sm={2}>
+                        Photo URL
+                    </Form.Label>
+                    <Col sm={10}>
+                        <Form.Control name="photo" type="photo" placeholder="Photo URL" required />
+                    </Col>
+                </Form.Group>
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+                    <Form.Label column sm={2}>
+                        Email
+                    </Form.Label>
+                    <Col sm={10}>
+                        <Form.Control name="email" type="email" placeholder="Email" required />
+                    </Col>
+                </Form.Group>
+
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
+                    <Form.Label column sm={2}>
+                        Password
+                    </Form.Label>
+                    <Col sm={10}>
+                        <Form.Control name="password" type="password" placeholder="Password" required />
+                    </Col>
+                </Form.Group>
+                <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
+                    <Form.Label column sm={2}>
+                        Confirm Password
+                    </Form.Label>
+                    <Col sm={10}>
+                        <Form.Control name="confirm" type="password" placeholder="Password" required />
+                    </Col>
+                </Form.Group>
                 <input onClick={handleAccept} type="checkbox" id="" name="accept" value="terms and conditons" />
-                <label htmlFor="accept"> Accept <Link to='/terms'>Terms and Conditon</Link></label><br />
-                <input className='btn-submit' type="submit" value="sign up" id="" disabled={!accept} />
-                <p>Already have an account <Link to='/login'>Login</Link></p>
-                <h4>{error}</h4>
-            </form>
+                <label htmlFor="accept"> Accept <Link to='/terms'>Terms and Conditon</Link></label><br /><br />
+                <Button variant="primary" type="submit" disabled={!accept} >
+                    Sign Up
+                </Button>
+            </Form>
         </div>
     );
 };
