@@ -41,16 +41,21 @@ const Header = () => {
                             {
                                 user?.uid ?
                                     <>
-                                        <OverlayTrigger overlay={<Tooltip id="tooltip-bottom">{user?.displayName}</Tooltip>}>
-                                            <img src={user?.photoURL} alt="" style={{ height: '30px' }} />
-                                        </OverlayTrigger>
-                                        <Button onClick={handleLogOut} variant="success" className="me-auto">log out</Button>
+                                        {['bottom'].map((placement) => (
+                                            <OverlayTrigger
+                                                key={placement}
+                                                placement={placement}
+                                                overlay={<Tooltip id={`tooltip-${placement}`}>{user?.displayName}
+                                                </Tooltip>}>
+                                                <img src={user?.photoURL} alt="" style={{ height: '30px' }} />
+                                            </OverlayTrigger>))}
+                                        <Button onClick={handleLogOut} variant="success" className="ms-3">log out</Button>
                                     </>
                                     :
-                                    <>
-                                        <Button variant="danger"><Link to='/login' className='text-decoration-none me-2 text-success'>Login</Link></Button>
+                                    <div className='d-grid gap-2 d-md-flex justify-content-md-end'>
+                                        <Button variant="light"><Link to='/login' className='text-decoration-none me-2 text-success'>Login</Link></Button>
                                         <Button variant="warning"><Link to='/register' className='text-decoration-none me-3 text-success'>Register</Link></Button>
-                                    </>
+                                    </div>
                             }
                         </>
                     </Nav>
