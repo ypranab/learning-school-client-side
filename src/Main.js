@@ -5,13 +5,14 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import LeftSideBar from './components/LeftSideBar/LeftSideBar';
 
+
 const Main = () => {
     return (
         <div>
             <Header></Header>
             <Container>
                 <Row>
-                    <Col lg="3" className='d-none d-lg-block'>
+                    <Col className='d-lg-block'>
                         <LeftSideBar></LeftSideBar>
                     </Col>
                     <Col lg="9">

@@ -9,7 +9,7 @@ import { AuthContext } from '../AuthContext/AuthProvider';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
-    const logoURL = 'https://assets.stickpng.com/images/5f49207a68ecc70004ae7045.png';
+    const logoURL = 'https://icon-library.com/images/logo-icon-png/logo-icon-png-11.jpg';
     //console.log(user);
     const handleLogOut = () => {
         logOut()
@@ -17,7 +17,7 @@ const Header = () => {
             .catch(() => { })
     }
     return (
-        <Navbar collapseOnSelect className='mb-5' expand="lg" bg="info" variant="info">
+        <Navbar collapseOnSelect className='mb-5 bg-opacity-50' expand="lg" bg="success" variant="success">
             <Container>
                 <Navbar.Brand>
                     <img
@@ -45,9 +45,8 @@ const Header = () => {
                                             <OverlayTrigger
                                                 key={placement}
                                                 placement={placement}
-                                                overlay={<Tooltip id={`tooltip-${placement}`}>{user?.displayName}
-                                                </Tooltip>}>
-                                                <img src={user?.photoURL} alt="" style={{ height: '30px' }} />
+                                                overlay={<Tooltip id={`tooltip-${placement}`}>{user?.displayName}</Tooltip>}>
+                                                <img className="rounded-circle" src={user?.photoURL} alt="" style={{ height: '2rem', width: '2rem' }} />
                                             </OverlayTrigger>))}
                                         <Button onClick={handleLogOut} variant="success" className="ms-3">log out</Button>
                                     </>

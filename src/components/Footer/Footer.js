@@ -2,9 +2,9 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 const Footer = () => {
     return (
-        <div>
+        <div className='mt-5'>
             <Card>
-                <Card.Footer className="text-muted">Footer</Card.Footer>
+                <Card.Footer className="text-muted">Copyright @2022 (programming-hero)</Card.Footer>
             </Card>
         </div>
     );
