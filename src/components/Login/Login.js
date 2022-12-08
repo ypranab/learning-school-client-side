@@ -31,7 +31,7 @@ const Login = () => {
                 form.reset();
                 setError('');
                 navigate(from, { replace: true });
-                console.log(location);
+                //console.log(location);
                 // if (user.emailVerified) {
                 //     navigate(from, { replace: true });
                 // }

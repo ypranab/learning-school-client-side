@@ -16,7 +16,7 @@ const CheckOut = () => {
 
             <Card>
                 <Card.Header>{course.title}</Card.Header>
-                <Card.Body ref={ref}>
+                <Card.Body className='m-5' ref={ref}>
                     <blockquote className="blockquote mb-0">
                         <p>
                             <h3>{course.title}-Checkout</h3>

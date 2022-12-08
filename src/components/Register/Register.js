@@ -1,13 +1,16 @@
 import React, { useContext, useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthContext/AuthProvider';
 
 const Register = () => {
     const { createUser, handleUpdate, verifyEmail } = useContext(AuthContext);
     const [error, setError] = useState();
     const [accept, setAccept] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const handleAccept = (event) => {
         setAccept(event.target.checked);
     }
@@ -37,6 +40,9 @@ const Register = () => {
                 setError('');
                 form.reset();
                 handleUpdateProfile(displayName, photoURL);
+                form.reset();
+                setError('');
+                navigate(from, { replace: true });
                 handleEmailVerify();
                 toast.success("Verify email.")
             })
